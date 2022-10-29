@@ -1,6 +1,3 @@
-from ast import Delete
-from email.mime import image
-from unicodedata import name
 from django.db import models
 
 # Create your models here.
