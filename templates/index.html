@@ -97,7 +97,7 @@
                                     <ul>
                                         {% for subcat in cat.subcategory_set.all %}
 
-                                        <li><a href="#"> {{subcat.name}} </a></li>
+                                        <li><a href="/?category={{subcat.id}}"> {{subcat.name}} </a></li>
 
                                         {% endfor %}
                                     </ul>
