@@ -37,7 +37,16 @@ class UserCreateForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password', 'password')
+        fields = ('username', 'email', 'password1', 'password2')
+
+    def __init__(self, *args, **kwargs):
+        super(UserCreateForm, self).__init__(*args, **kwargs)
+        
+        self.fields['username'].widget.attrs['placeholder'] = 'User name'
+        self.fields['email'].widget.attrs['placeholder'] = 'Email'
+        self.fields['password1'].widget.attrs['placeholder'] = 'Password'
+        self.fields['password2'].widget.attrs['placeholder'] = 'Confirm password'
+
     def save(self, commit: True):
         user = super(UserCreationForm, self).save(commit=False)
         user.email = self.cleaned_data['email']
