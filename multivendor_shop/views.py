@@ -30,6 +30,7 @@ def signup(request):
     print('signup called')
     if(request.method == 'POST'):
         form = UserCreateForm(request.POST)
+        
         if form.is_valid():
             new_user = form.save()
             new_user = authenticate(

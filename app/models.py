@@ -56,5 +56,5 @@ class UserCreateForm(UserCreationForm):
         
     def clean_email(self):
         if User.objects.filter(email=self.cleaned_data['email']).exists():
-            raise forms.ValidationError(self.fields['email'].error_message['exists'])
+            raise forms.ValidationError(self.fields['email'].error_messages['exists'])
         return self.cleaned_data['email']
