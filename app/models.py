@@ -48,7 +48,7 @@ class UserCreateForm(UserCreationForm):
         self.fields['password2'].widget.attrs['placeholder'] = 'Confirm password'
 
     def save(self, commit: True):
-        user = super(UserCreationForm, self).save(commit=False)
+        user = super(UserCreateForm, self).save(commit=False)
         user.email = self.cleaned_data['email']
         if commit:
             user.save()

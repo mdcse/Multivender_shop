@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from app.models import UserCreateForm
 
 def master(request):
-    return render(request, 'master.html',{})
+    return redirect('index/')
 
 
 def index(request):
@@ -32,13 +32,14 @@ def signup(request):
         form = UserCreateForm(request.POST)
         
         if form.is_valid():
-            new_user = form.save()
+            new_user = form.save(commit=True)
             new_user = authenticate(
                 username=form.cleaned_data['username'],
                 password=form.cleaned_data['password1'],
             )
             login(request, new_user),
-            return redirect('index')
+            print('signup success')
+            return redirect('/')
     else:
         form = UserCreateForm()
 
@@ -48,6 +49,5 @@ def signup(request):
 
     return render(request, 'registration/signup.html',context)
 
-def login(request):
-    print('login called')
-    return render(request, 'registration/login.html', {})
+def signin(request):
+    return render(request, 'registration/signup.html')
