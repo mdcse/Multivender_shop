@@ -22,8 +22,8 @@ from .views import *
 
 urlpatterns = [
     path('admin', admin.site.urls),
-    path('',index),
-    path('master', master),
+    path('',index, name='index'),
+    path('master', master, name='master'),
 
     path('signup', signup, name='sign_up'),
     path('login', login, name='login'),
