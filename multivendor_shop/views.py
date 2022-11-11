@@ -42,12 +42,14 @@ def signup(request):
             return redirect('/')
     else:
         form = UserCreateForm()
-
+    # base = "http://127.0.0.1:8000"
     context = {
         'form' : form,
+        # 'base' : base
     }
 
-    return render(request, 'registration/signup.html',context)
+    return render(request, 'registration/signup.html', context)
 
-def signin(request):
-    return render(request, 'registration/signup.html')
+def login(request):
+    print('sigin called')
+    return render(request, 'registration/login.html')

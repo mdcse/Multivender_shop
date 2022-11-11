@@ -21,12 +21,12 @@ from django.conf.urls.static import static
 from .views import *
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin', admin.site.urls),
     path('',index),
     path('master', master),
 
-    path('signup', signup),
-    path('login', login),
+    path('signup', signup, name='sign_up'),
+    path('login', login, name='login'),
     path('account/', include('django.contrib.auth.urls')),
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
