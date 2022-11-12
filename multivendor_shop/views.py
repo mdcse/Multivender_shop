@@ -50,6 +50,6 @@ def signup(request):
 
     return render(request, 'registration/signup.html', context)
 
-def login(request):
+def signin(request):
     print('sigin called')
     return render(request, 'registration/login.html')
