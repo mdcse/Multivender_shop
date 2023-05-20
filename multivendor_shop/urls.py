@@ -26,7 +26,7 @@ urlpatterns = [
     path('master', master, name='master'),
 
     path('signup', signup, name='sign_up'),
-    path('login', signin, name='login'),
+    path('login', login, name='login'),
     path('account/', include('django.contrib.auth.urls')),
 
     #add to cart
