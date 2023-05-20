@@ -1,5 +1,4 @@
-from dataclasses import fields
-from pyexpat import model
+import datetime
 from django.db import models
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -58,3 +57,24 @@ class UserCreateForm(UserCreationForm):
         if User.objects.filter(email=self.cleaned_data['email']).exists():
             raise forms.ValidationError(self.fields['email'].error_messages['exists'])
         return self.cleaned_data['email']
+
+
+class ContactUs(models.Model):
+    name = models.CharField(max_length= 150)
+    email = models.EmailField(max_length=100)
+    subject = models.CharField(max_length=150)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.email
+
+class Order(models.Model):
+    image = models.ImageField(upload_to = 'ecommerce/order/image')
+    product = models.ForeignKey(Product, on_delete = models.CASCADE)
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    quantity = models.IntegerField()
+    price = models.IntegerField()
+    address = models.CharField(max_length = 150)
+    phone = models.CharField(max_length = 150)
+    pincode = models.CharField(max_length = 150)
+    date = models.DateField(default = datetime.datetime.today)
