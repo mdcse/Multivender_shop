@@ -36,6 +36,6 @@ urlpatterns = [
     path('cart/item_decrement/<int:id>/',
          item_decrement, name='item_decrement'),
     path('cart/cart_clear/', cart_clear, name='cart_clear'),
-    path('cart/cart-detail/',cart_detail,name='cart_detail'),
+    path('cart/cart_detail/',cart_detail,name='cart_detail'),
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

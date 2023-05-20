@@ -57,13 +57,21 @@ def login(request):
     print('sigin called')
     return render(request, 'registration/login.html')
 
+<<<<<<< HEAD
+
+=======
 # add to cart
+>>>>>>> 8b8e9537ba4bc6518213abbfd08f4ca1f35a3e30
 
 @login_required(login_url="/account/login/")
 def cart_add(request, id):
     cart = Cart(request)
     product = Product.objects.get(id=id)
     cart.add(product=product)
+<<<<<<< HEAD
+    print(cart)
+=======
+>>>>>>> 8b8e9537ba4bc6518213abbfd08f4ca1f35a3e30
     return redirect("index")
 
 
