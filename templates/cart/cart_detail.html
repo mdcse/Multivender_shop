@@ -38,8 +38,8 @@
                         <td class="cart_quantity">
                             <div class="cart_quantity_button">
                                 <a class="cart_quantity_up" href="{% url 'item_increment' key %}"> + </a>
-                                <input class="cart_quantity_input" type="text" name="quantity" value="{{value.quantity}}"
-                                    autocomplete="off" size="2">
+                                <input class="cart_quantity_input" type="text" name="quantity"
+                                    value="{{value.quantity}}" autocomplete="off" size="2">
                                 <a class="cart_quantity_down" href="{% url 'item_decrement' key %}"> - </a>
                             </div>
                         </td>
@@ -47,7 +47,8 @@
                             <p class="cart_total_price">₹ {{value.price|multiply:value.quantity}}</p>
                         </td>
                         <td class="cart_delete">
-                            <a class="cart_quantity_delete" href="{% url 'item_clear' key %}"><i class="fa fa-times"></i></a>
+                            <a class="cart_quantity_delete" href="{% url 'item_clear' key %}"><i
+                                    class="fa fa-times"></i></a>
                         </td>
                     </tr>
                     {% endfor %}
@@ -71,9 +72,37 @@
                     </td>
                 </tfoot>
             </table>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="float: right">Checkout</button>
         </div>
     </div>
 </section>
 <!--/#cart_items-->
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Phone</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Pin Code:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Checkout</button>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

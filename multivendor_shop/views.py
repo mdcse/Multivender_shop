@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from app.models import Category, Product
+from app.models import Category, Product, ContactUs
 
 from django.contrib.auth import authenticate, login
 from app.models import UserCreateForm
@@ -53,25 +53,17 @@ def signup(request):
 
     return render(request, 'registration/signup.html', context)
 
-def login(request):
+def log_in(request):
     print('sigin called')
     return render(request, 'registration/login.html')
 
-<<<<<<< HEAD
-
-=======
-# add to cart
->>>>>>> 8b8e9537ba4bc6518213abbfd08f4ca1f35a3e30
 
 @login_required(login_url="/account/login/")
 def cart_add(request, id):
     cart = Cart(request)
     product = Product.objects.get(id=id)
     cart.add(product=product)
-<<<<<<< HEAD
     print(cart)
-=======
->>>>>>> 8b8e9537ba4bc6518213abbfd08f4ca1f35a3e30
     return redirect("index")
 
 
@@ -109,3 +101,21 @@ def cart_clear(request):
 @login_required(login_url="/account/login/")
 def cart_detail(request):
     return render(request, 'cart/cart_detail.html')
+
+def contact_us(request):
+    # print('contact_us called')
+    if request.method == 'POST':
+        contact = ContactUs(
+            name = request.POST.get('name'),
+            email = request.POST.get('email'),
+            subject = request.POST.get('subject'),
+            message = request.POST.get('message'),
+        )
+        contact.save()
+        # print(contact.name)
+        # print(contact.email)
+        # print('contact_us saved')
+    # else:
+    #     print('contact_us not saved')
+
+    return render(request, 'contact_page.html')
