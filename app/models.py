@@ -77,8 +77,12 @@ class Order(models.Model):
     address = models.CharField(max_length = 150)
     phone = models.CharField(max_length = 150)
     pincode = models.CharField(max_length = 150)
+<<<<<<< HEAD
     date = models.DateField(default = datetime.datetime.today)
 
     def __str__(self):
         return self.product.name
     
+=======
+    date = models.DateField(default = datetime.datetime.today)
+>>>>>>> origin

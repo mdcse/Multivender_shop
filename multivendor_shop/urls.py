@@ -38,6 +38,10 @@ urlpatterns = [
     path('cart/cart_detail/',cart_detail,name='cart_detail'),
 
     # contact page
+<<<<<<< HEAD
     path('contact_us/', contact_us, name='contact_us'),
+=======
+    path('contact_us', contact_us, name='contact_us'),
+>>>>>>> origin
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
