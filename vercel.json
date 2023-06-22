@@ -1,0 +1,29 @@
+{
+    "builds": [
+        {
+            "src": "multivendor_shop/wsgi.py",
+            "use": "@vercel-python-wsgi",
+            "config": {
+                "maxLambdaSize": "15mb",
+                "runtime": "python 3.9"
+            }
+        },
+        {
+            "src":"build_files.sh",
+            "use": "@vercel/static-build",
+            "config":{
+                "distDir": "staticfiles_build"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/static/(.*)",
+            "dest": "/static/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "multivendor_shop/wsgi.py"
+        }
+    ]
+}
